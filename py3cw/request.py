@@ -136,7 +136,7 @@ class Py3CW(IPy3CW):
             return error, {}
 
         except Exception as generic_exc:
-            status_code = None
+            status_code = generic_exc.response.status_code if generic_exc.response else None
             if 'response' in locals():
                 status_code = response.status_code
             if not 'response_json' in locals():
